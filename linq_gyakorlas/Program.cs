@@ -292,13 +292,48 @@ namespace linq_gyakorlas
             //}
 
 
-            var eredmeny = diakok.Where(d => d.Atlag >= 4.0); //.ToList() nem lesz benne Iván
+            //var eredmeny = diakok.Where(d => d.Atlag >= 4.0); //.ToList() nem lesz benne Iván
 
-            diakok.Add(new Diak("Iván", 18, "12B", 4.9));
+            //diakok.Add(new Diak("Iván", 18, "12B", 4.9));
 
-            foreach (Diak d in eredmeny)
+            //foreach (Diak d in eredmeny)
+            //{
+            //    Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
+            //}
+
+
+            // ÓRAI MUNKAI FELADATOK
+            //egyes osztályok osztályátlaga
+            Console.WriteLine("Osztályok átlaga:");
+            var eredmeny = diakok
+                .GroupBy(d => d.Osztaly)
+                .Select(csoport => new
+                {
+                    Osztaly = csoport.Key,
+                    Atlag = csoport.Average(d => d.Atlag),
+                });
+
+            foreach (var adat in eredmeny)
             {
-                Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
+                Console.WriteLine($"{adat.Osztaly} - {adat.Atlag}");
+            }
+
+            Console.WriteLine();
+
+            //osztályok rangsorolása átlagjuk alapján
+            Console.WriteLine("Osztályok átlaga csökennő sorrendben:");
+            var eredmeny2 = diakok
+                .GroupBy(d => d.Osztaly)
+                .Select(csoport => new
+                {
+                    Osztaly = csoport.Key,
+                    Atlag = csoport.Average(d => d.Atlag),
+                })
+                .OrderByDescending(csoport => csoport.Atlag);
+
+            foreach (var adat in eredmeny2)
+            {
+                Console.WriteLine($"{adat.Osztaly} - {adat.Atlag}");
             }
         }
     }
