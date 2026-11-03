@@ -10,7 +10,7 @@ namespace linq_gyakorlas
 
             //List<int> szamok = new List<int> { 4, 12, 7, 28, 42, 18, 3, 25, 6 };
 
-        //LINQ nélkkül
+            //LINQ nélkkül
             //List<int> eredmeny = new List<int>();
 
             //foreach (int szam in szamok) 
@@ -21,16 +21,16 @@ namespace linq_gyakorlas
             //    }
             //}
 
-        //LINQ-val 1
+            //LINQ-val 1
             //var eredmeny = szamok.Where(szam => szam > 10);
 
-        //2
+            //2
             //int[] szamok = { 4, 12, 7, 28, 42, 18, 3, 25, 6 };
-        //3
+            //3
             //var eredmeny = szamok.
             //    Where(szam => szam > 10)
             //    .OrderBy(szam => szam);
-        //4
+            //4
             //var eredmeny = from szam in szamok
             //               where szam > 10
             //               orderby szam
@@ -200,6 +200,106 @@ namespace linq_gyakorlas
 
             //Console.WriteLine(legjobb.Nev);
 
+
+            //Diak utolso = diakok.Last();
+
+            //Console.WriteLine(utolso.Nev);
+
+
+            //Diak diak = diakok.Single(d => d.Nev == "Anna");
+
+            //Console.WriteLine(diak.Nev);
+
+
+            //bool vanJelesTanulo = diakok.Any(d => d.Atlag >= 4.5);
+
+            //Console.WriteLine(vanJelesTanulo?"Van jeles tanuló.":"Nincs jeles tanuló.");
+
+
+            //bool vanDiak = diakok.Any();
+
+            //Console.WriteLine(vanDiak?"Van diák.":"Nincs diák.");
+
+
+            //bool mindenDiakNagykoru = diakok.All(d => d.Eletkor >= 18);
+
+            //Console.WriteLine(mindenDiakNagykoru ? "Mindenki nagykorú.": "Nem mindenki nagykorú.");
+
+
+            //int osszesen = diakok.Count();
+
+            //Console.WriteLine(osszesen);
+
+
+            //int osszeg = diakok.Sum(d => d.Eletkor);
+
+            //Console.WriteLine(osszeg);
+
+
+            //double atlagEletkor = diakok.Average(d => d.Eletkor);
+
+            //Console.WriteLine(atlagEletkor);
+
+
+            //double legrosszabb = diakok.Min(d => d.Atlag);
+            //double legjobb = diakok.Max(d => d.Atlag);
+
+            //Console.WriteLine(legrosszabb);
+            //Console.WriteLine(legjobb);
+
+
+            //Diak? legjobbDiak = diakok.OrderByDescending(d => d.Atlag).FirstOrDefault();
+
+            //Console.WriteLine($"{legjobbDiak.Nev} - {legjobbDiak.Atlag}");
+
+
+            //var osztalyok = diakok.Select(d => d.Osztaly).Distinct();
+
+            //foreach (string osztaly in osztalyok)
+            //{
+            //    Console.WriteLine(osztaly);
+            //}
+
+
+            //var csoportok = diakok.GroupBy(d => d.Osztaly);
+
+            //foreach (var csoport in csoportok)
+            //{
+            //    Console.WriteLine($"Osztály: {csoport.Key}");
+            //}
+
+            //foreach (var csoport in csoportok)
+            //{
+            //    Console.WriteLine($"Osztály: {csoport.Key} - Tanulók száma: {csoport.Count()}");
+            //    foreach (Diak d in csoport)
+            //    {
+            //        Console.WriteLine($"\t{d.Nev} - {d.Atlag}");
+            //    }
+            //}
+
+
+            //var eredmeny = diakok
+            //    .GroupBy(d => d.Osztaly)
+            //    .Select(csoport => new
+            //    {
+            //        Osztaly = csoport.Key,
+            //        Letszam = csoport.Count(),
+            //    });
+
+            //foreach (var adat in eredmeny)
+            //{
+            //    Console.WriteLine($"{adat.Osztaly} - {adat.Letszam}");
+            //}
+
+
+            var eredmeny = diakok.Where(d => d.Atlag >= 4.0); //.ToList() nem lesz benne Iván
+
+            diakok.Add(new Diak("Iván", 18, "12B", 4.9));
+
+            foreach (Diak d in eredmeny)
+            {
+                Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
+            }
         }
     }
 }
