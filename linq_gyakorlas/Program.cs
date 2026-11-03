@@ -151,14 +151,55 @@ namespace linq_gyakorlas
             //    Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
             //}
 
-            var eredmeny = diakok
-                .OrderByDescending(d => d.Atlag)
-                .Take(3); //limit
 
-            foreach (Diak d in eredmeny)
-            {
-                Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
-            }
+            //var eredmeny = diakok
+            //    .OrderByDescending(d => d.Atlag)
+            //    .Take(3); //limit
+
+            //foreach (Diak d in eredmeny)
+            //{
+            //    Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
+            //}
+
+
+            //var eredmeny = diakok
+            //    .OrderByDescending(d => d.Atlag)
+            //    .Skip(3);
+
+            //foreach (Diak d in eredmeny)
+            //{
+            //    Console.WriteLine($"{d.Nev} - {d.Osztaly} - {d.Atlag}");
+            //}
+
+            // ----------------------------
+
+            //Diak elso = diakok.First();
+
+            //Console.WriteLine(elso.Nev);
+
+
+
+            //Diak? keresett = diakok.FirstOrDefault(d => d.Nev == "Zoltán");
+
+            //if (keresett != null)
+            //{
+            //    Console.WriteLine($"{keresett.Nev} - {keresett.Osztaly} - {keresett.Atlag}");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Nincs ilyen nevű diák!");
+            //}
+
+
+            //Diak? legjobb = diakok.Where(d => d.Atlag >= 4.5).FirstOrDefault();
+
+            //Console.WriteLine(legjobb.Nev);
+
+
+            //Diak? legjobb = diakok.OrderByDescending(d => d.Atlag).FirstOrDefault();
+
+            //Console.WriteLine(legjobb.Nev);
+
         }
     }
 }
